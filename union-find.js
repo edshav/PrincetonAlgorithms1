@@ -112,4 +112,5 @@ class UnionFind {
             this.sizes[pRoot] += this.sizes[qRoot];
         }
     }
+
 }
