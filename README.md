@@ -22,3 +22,4 @@ keep going until it doesn’t change (algorithm ensures no cycles)
 ##### Quick-union defect.
 * Trees can get tall.
 * Find too expensive (could be N array accesses).
+##### Improvement 1:  weighting

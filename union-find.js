@@ -43,3 +43,40 @@ class QuickUnionUF {
         this.id[pRoot] = qRoot;
     }
 }
+
+// Quick-union is also too slow
+
+class WeightedQuickUnion {
+    // Data structure.  Same as quick-union, but maintain extra array sizes[i]to count number of objects in the tree rooted at i
+    constructor(num) {
+        this.id = [];
+        this.sizes = [];
+        for (let i = 0; i < num; i++) {
+            this.id[i] = i;
+            this.sizes[i] = 0;
+        }
+    }
+    _root(el) {
+        while (el !== this.id[el]) {
+            el = this.id(el);
+        }
+        return el;
+    }
+    // Find.  Identical to quick-union
+    connected(p, q) {
+        return this._root(p) === this._root(q);
+    }
+    // Union.  Modify quick-union to:・Link root of smaller tree to root of larger tree.・Update the sizes[] array.
+    union(p, q) {
+        const pRoot = this._root(p);
+        const qRoot = this._root(q);
+        if (pRoot === qRoot) return;
+        if  (this.sizes[pRoot] < this.sizes[qRoot]) {
+            this.id[pRoot] = qRoot;
+            this.sizes[qRoot] += this.sizes[pRoot];
+        }  else                {
+            this.id[qRoot] = pRoot;
+            this.sizes[pRoot] += this.sizes[qRoot];
+        }
+    }
+}
