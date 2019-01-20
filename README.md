@@ -23,3 +23,4 @@ keep going until it doesn’t change (algorithm ensures no cycles)
 * Trees can get tall.
 * Find too expensive (could be N array accesses).
 ##### Improvement 1:  weighting
+##### Improvement 2:  path compression
